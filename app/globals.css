@@ -1,26 +1,67 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --ink: #0a0a0a;
+  --red: #dc2626;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+* {
+  box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
+  margin: 0;
+  min-width: 0;
+  background: var(--ink);
+  color: #f5f5f5;
   font-family: Arial, Helvetica, sans-serif;
+}
+
+button { font: inherit; }
+::selection { background: var(--red); color: white; }
+
+@media (max-width: 1023px) {
+  .hero-background {
+    left: auto !important;
+    right: 0 !important;
+    width: 150% !important;
+    max-width: none;
+    mask-image: linear-gradient(to bottom, transparent calc(100% - clamp(240px, 75vw, 768px)), black calc(100% - clamp(175px, 55vw, 560px)));
+  }
+
+  .hero-content {
+    padding-bottom: clamp(190px, 65vw, 420px);
+  }
+
+  .offer-background {
+    left: 0 !important;
+    right: auto !important;
+    width: 155% !important;
+    max-width: none;
+    mask-image: linear-gradient(to bottom, black 0, black clamp(90px, 32vw, 230px), transparent clamp(160px, 52vw, 380px));
+  }
+
+  .offer-content {
+    padding-top: clamp(160px, 42vw, 290px);
+  }
+}
+
+@media (min-width: 640px) and (max-width: 1023px) {
+  .hero-background {
+    width: 120% !important;
+    mask-image: linear-gradient(to bottom, transparent calc(100% - 60vw), black calc(100% - 42vw));
+  }
+
+  .offer-background {
+    width: 120% !important;
+    mask-image: linear-gradient(to bottom, black 0, black 23vw, transparent 40vw);
+  }
+
+  .offer-content {
+    padding-top: 40vw;
+  }
 }
